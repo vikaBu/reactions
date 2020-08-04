@@ -1,0 +1,4 @@
+- average speed
+- leader board
+- anti-click buttons
+- don't repeat buttons

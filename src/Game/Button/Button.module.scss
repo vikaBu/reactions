@@ -1,4 +1,10 @@
 .button {
   fill: black;
   transition: all ease 0.1s;
+  &.active {
+    fill:green;
+  }
+}
+.GetClassName{
+  background-color: green;
 }

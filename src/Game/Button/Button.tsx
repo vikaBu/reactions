@@ -6,12 +6,12 @@ interface ButtonProps {
     x: number;
     y: number;
     activeButtonId: number;
-    setActiveButtonId: (id: number) => void;
-    currentScore: number;
-    changeCurrentScore: (score: number) => void;
+    activeButtonisClicked: () => void;
+    
 }
 
-export const Button: FunctionComponent<ButtonProps> = ({ id, x, y, activeButtonId, setActiveButtonId,currentScore, changeCurrentScore }) => {
+
+export const Button: FunctionComponent<ButtonProps> = ({ id, x, y, activeButtonId, activeButtonisClicked}) => {
 // is button active (its id is the same as active one)
     const isActive = id === activeButtonId;
 //if it is active change its style
@@ -26,10 +26,7 @@ export const Button: FunctionComponent<ButtonProps> = ({ id, x, y, activeButtonI
     
     const buttonClicked = (): void => {
         if (isActive){
-            // geting a random button to light up
-            const randomButton = Math.floor(Math.random() * 8);
-            setActiveButtonId(randomButton);
-            changeCurrentScore(currentScore + 1);
+            activeButtonisClicked();
         }
     }
         // setting up an event that if it is clicked the program knows

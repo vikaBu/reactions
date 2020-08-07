@@ -8,11 +8,11 @@ import {GameMode} from "../../App"
 interface BoardProps {
     currentScore: number;
     changeCurrentScore: (newGameScore: number) => void;
-    setMode: (mode: GameMode) => void;
+    endGame : () => void;
 
 }
 // setting up current button and what is the button actually clicked
-export const Board: FunctionComponent<BoardProps> = ({currentScore, changeCurrentScore, setMode}) => {
+export const Board: FunctionComponent<BoardProps> = ({currentScore, changeCurrentScore, endGame}) => {
     const [activeButtonId, setActiveButtonId] = useState(0);
 
     const activeButtonisClicked = () => {
@@ -22,10 +22,11 @@ export const Board: FunctionComponent<BoardProps> = ({currentScore, changeCurren
             setActiveButtonId(randomButton);
             changeCurrentScore(currentScore + 10);
                 if (currentScore === 90){
-                  setMode("Finished")
-                }
+                 endGame()
+                }   
 
     }
+
 
 // each of the buttons here have states equal to what it is meant to do 
     return (

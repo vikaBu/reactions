@@ -1,21 +1,42 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Game } from "./Game/Game";
 import styles from "./App.module.scss";
+import moment from "moment";
+import { GameOver } from './GameOver';
 
 export type GameMode = "Playing" | "Finished";
 
 
 export const App: FunctionComponent = () => {
     const [mode, setMode] = useState <GameMode>("Playing");
+    const [startTime, setStartTime] = useState (moment.now());
+    const [endTime, setEndTime] =useState (moment.now());
+    const [listofTimes, setTimes] = useState<number[]>([15]);
 
-    if (mode === "Finished") {
-        return <div>GAME OVER</div>
+    const startGame = () => {
+        setMode("Playing");
+        setStartTime(moment.now())
+    }
+    const endGame = () => {
+        setMode("Finished");
+        setEndTime(moment.now())
+        
+    }
+    const gameTimeInMilliseconds = endTime - startTime
+
+    const AddNewTime = (Time: number) => {
+        setTimes(listofTimes.concat(Time));
     }
 
+    if (mode === "Finished") {
+        return <GameOver startGame={startGame} gameTimeInMilliseconds={gameTimeInMilliseconds} listOfTimes={listofTimes} AddTime={AddNewTime}/>
+    }
     return (
+        
         <main className={styles.main}>
-            <Game mode={mode} setMode={setMode} />
+            <Game endGame={endGame} />
         </main>
-    );
+    )
+    
 };
 

@@ -4,17 +4,18 @@ import {Board} from "./Board/Board";
 import { GameMode } from "../App";
 
 interface GameState {
-    mode: string;
-    setMode: (state: GameMode) => void;
+    endGame: () => void;
 }
 
-export const Game: FunctionComponent <GameState> = ({mode, setMode}) => {
+export const Game: FunctionComponent <GameState> = ({endGame}) => {
     const [currentScore, changeCurrentScore] = useState(0);
+
+
 
     return (
         <section className={styles.content}>
             <h1>Your Score : {currentScore}</h1>
-            <Board currentScore={currentScore} changeCurrentScore={changeCurrentScore} setMode = {setMode}/>
+            <Board currentScore={currentScore} changeCurrentScore={changeCurrentScore} endGame={endGame}/>
         </section>
 
         

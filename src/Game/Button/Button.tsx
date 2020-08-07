@@ -1,6 +1,7 @@
 ﻿import React, { FunctionComponent } from "react";
 import styles from "./Button.module.scss";
 
+
 interface ButtonProps {
     id: number;
     x: number;
@@ -9,8 +10,6 @@ interface ButtonProps {
     activeButtonisClicked: () => void;
     
 }
-
-
 export const Button: FunctionComponent<ButtonProps> = ({ id, x, y, activeButtonId, activeButtonisClicked}) => {
 // is button active (its id is the same as active one)
     const isActive = id === activeButtonId;
